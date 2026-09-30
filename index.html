@@ -1,10 +1,444 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Private Orbits</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #fff;
+      color: #111;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .site {
+      width: min(92%, 920px);
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 64px 0 44px;
+    }
+
+    h1 {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: clamp(32px, 6vw, 58px);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .tagline {
+      margin-top: 12px;
+      font-size: 15px;
+      font-style: italic;
+    }
+
+    nav {
+      margin-top: 28px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+    }
+
+    nav a {
+      color: #111;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .featured {
+      text-align: center;
+      margin-bottom: 78px;
+    }
+
+    .panel-image {
+      display: block;
+      width: min(100%, 720px);
+      margin: 0 auto;
+      border: 1px solid #111;
+    }
+
+    .caption {
+      max-width: 700px;
+      margin: 22px auto 0;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+
+    .panel-date {
+      margin-top: 12px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .controls {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 28px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .controls button {
+      background: none;
+      border: none;
+      padding: 5px;
+      color: #111;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .controls button:hover {
+      text-decoration: underline;
+    }
+
+    section {
+      padding: 70px 0;
+      border-top: 1px solid #ddd;
+    }
+
+    section h2 {
+      text-align: center;
+      margin: 0 0 42px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 18px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .archive-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .archive-item {
+      cursor: pointer;
+    }
+
+    .archive-item img {
+      width: 100%;
+      display: block;
+      border: 1px solid #111;
+    }
+
+    .archive-item p {
+      margin: 10px 0 0;
+      font-size: 13px;
+      line-height: 1.35;
+    }
+
+    .about,
+    .subscribe {
+      max-width: 620px;
+      margin: 0 auto;
+      text-align: center;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .subscribe a {
+      color: #111;
+      font-weight: bold;
+    }
+
+    footer {
+      padding: 50px 0 70px;
+      text-align: center;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+    }
+
+    .empty {
+      text-align: center;
+      padding: 100px 0;
+      font-style: italic;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        padding-top: 42px;
+      }
+
+      .archive-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+
+      .controls {
+        gap: 14px;
+      }
+    }
+  </style>
 </head>
+
 <body>
-  <h1>PRIVATE ORBITS</h1>
-  <p>Single-panel observations from somewhere slightly wrong.</p>
+
+  <div class="site">
+
+    <header>
+      <h1>PRIVATE ORBITS</h1>
+
+      <div class="tagline">
+        Single-panel observations from somewhere slightly wrong.
+      </div>
+
+      <nav>
+        <a href="#archive">Archive</a>
+        <a href="#about">About</a>
+        <a href="#subscribe">Subscribe</a>
+      </nav>
+    </header>
+
+
+    <main>
+
+      <div id="featured" class="featured"></div>
+
+
+      <section id="archive">
+        <h2>Archive</h2>
+        <div id="archiveGrid" class="archive-grid"></div>
+      </section>
+
+
+      <section id="about">
+        <h2>About</h2>
+
+        <div class="about">
+          <p>
+            <em>Private Orbits</em> is a series of single-panel drawings
+            concerning people, creatures and situations that have drifted
+            very slightly away from normal.
+          </p>
+        </div>
+      </section>
+
+
+      <section id="subscribe">
+        <h2>Subscribe</h2>
+
+        <div class="subscribe">
+          <p>
+            New Orbits occasionally escape into the world.
+          </p>
+
+          <p>
+            Mailing list coming soon.
+          </p>
+        </div>
+      </section>
+
+    </main>
+
+
+    <footer>
+      © Private Orbits
+    </footer>
+
+  </div>
+
+
+<script>
+
+/*
+=========================================================
+PRIVATE ORBITS — PANEL LIST
+
+Each time we publish a new panel, add ONE new entry here.
+
+Newest panel goes FIRST.
+
+Example:
+
+{
+  image: "panels/viking-queue.jpg",
+  caption: "There was a brief moment of tension...",
+  date: "3 October 2026"
+},
+
+=========================================================
+*/
+
+const panels = [
+
+  /*
+  Add first published panel here.
+  */
+
+];
+
+
+let currentPanel = 0;
+
+
+function showPanel(index) {
+
+  if (panels.length === 0) {
+
+    document.getElementById("featured").innerHTML =
+      '<div class="empty">First orbit incoming.</div>';
+
+    return;
+  }
+
+  currentPanel = index;
+
+  const panel = panels[currentPanel];
+
+  document.getElementById("featured").innerHTML = `
+
+    <img
+      class="panel-image"
+      src="${panel.image}"
+      alt="Private Orbits comic panel"
+    >
+
+    <div class="caption">
+      ${panel.caption}
+    </div>
+
+    <div class="panel-date">
+      ${panel.date}
+    </div>
+
+    <div class="controls">
+
+      <button onclick="previousPanel()">
+        ← Previous
+      </button>
+
+      <button onclick="randomPanel()">
+        Random
+      </button>
+
+      <button onclick="nextPanel()">
+        Next →
+      </button>
+
+    </div>
+  `;
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+
+function previousPanel() {
+
+  if (panels.length < 2) return;
+
+  currentPanel++;
+
+  if (currentPanel >= panels.length) {
+    currentPanel = 0;
+  }
+
+  showPanel(currentPanel);
+}
+
+
+function nextPanel() {
+
+  if (panels.length < 2) return;
+
+  currentPanel--;
+
+  if (currentPanel < 0) {
+    currentPanel = panels.length - 1;
+  }
+
+  showPanel(currentPanel);
+}
+
+
+function randomPanel() {
+
+  if (panels.length < 2) return;
+
+  let random;
+
+  do {
+    random = Math.floor(Math.random() * panels.length);
+  }
+  while (random === currentPanel);
+
+  showPanel(random);
+}
+
+
+function buildArchive() {
+
+  const archive = document.getElementById("archiveGrid");
+
+  if (panels.length === 0) {
+
+    archive.innerHTML =
+      '<p style="grid-column:1/-1;text-align:center;">Archive currently empty.</p>';
+
+    return;
+  }
+
+  archive.innerHTML = "";
+
+  panels.forEach((panel, index) => {
+
+    const item = document.createElement("div");
+
+    item.className = "archive-item";
+
+    item.innerHTML = `
+
+      <img
+        src="${panel.image}"
+        alt="Private Orbits comic panel"
+      >
+
+      <p>${panel.caption}</p>
+    `;
+
+    item.onclick = function() {
+      showPanel(index);
+    };
+
+    archive.appendChild(item);
+
+  });
+
+}
+
+
+buildArchive();
+showPanel(0);
+
+</script>
+
 </body>
 </html>
