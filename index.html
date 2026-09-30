@@ -145,11 +145,6 @@ footer {
   letter-spacing: 0.12em;
 }
 
-.empty {
-  padding: 100px 0;
-  font-style: italic;
-}
-
 @media (max-width: 700px) {
   header {
     padding-top: 42px;
@@ -242,22 +237,12 @@ Mailing list coming soon.
 <script>
 
 const panels = [
-
+  "IMG_0224.png"
 ];
-
 
 let currentPanel = 0;
 
-
 function showPanel(index) {
-
-  if (panels.length === 0) {
-
-    document.getElementById("featured").innerHTML =
-      '<div class="empty">First orbit incoming.</div>';
-
-    return;
-  }
 
   currentPanel = index;
 
@@ -285,13 +270,7 @@ function showPanel(index) {
 
     </div>
   `;
-
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
 }
-
 
 function previousPanel() {
 
@@ -306,7 +285,6 @@ function previousPanel() {
   showPanel(currentPanel);
 }
 
-
 function nextPanel() {
 
   if (panels.length < 2) return;
@@ -320,7 +298,6 @@ function nextPanel() {
   showPanel(currentPanel);
 }
 
-
 function randomPanel() {
 
   if (panels.length < 2) return;
@@ -328,26 +305,15 @@ function randomPanel() {
   let random;
 
   do {
-
     random = Math.floor(Math.random() * panels.length);
-
   } while (random === currentPanel);
 
   showPanel(random);
 }
 
-
 function buildArchive() {
 
   const archive = document.getElementById("archiveGrid");
-
-  if (panels.length === 0) {
-
-    archive.innerHTML =
-      '<p style="grid-column:1/-1;text-align:center;">Archive currently empty.</p>';
-
-    return;
-  }
 
   archive.innerHTML = "";
 
@@ -366,20 +332,19 @@ function buildArchive() {
     `;
 
     item.onclick = function() {
-
       showPanel(index);
-
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     };
 
     archive.appendChild(item);
 
   });
-
 }
 
-
 buildArchive();
-
 showPanel(0);
 
 </script>
