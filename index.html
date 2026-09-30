@@ -1,295 +1,247 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Private Orbits</title>
+<title>Private Orbits</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+<style>
+* {
+  box-sizing: border-box;
+}
 
-    html {
-      scroll-behavior: smooth;
-    }
+html {
+  scroll-behavior: smooth;
+}
 
-    body {
-      margin: 0;
-      background: #fff;
-      color: #111;
-      font-family: Georgia, "Times New Roman", serif;
-    }
+body {
+  margin: 0;
+  background: white;
+  color: #111;
+  font-family: Georgia, "Times New Roman", serif;
+}
 
-    .site {
-      width: min(92%, 920px);
-      margin: 0 auto;
-    }
+.site {
+  width: min(92%, 920px);
+  margin: auto;
+}
 
-    header {
-      text-align: center;
-      padding: 64px 0 44px;
-    }
+header {
+  text-align: center;
+  padding: 60px 0 42px;
+}
 
-    h1 {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: clamp(32px, 6vw, 58px);
-      font-weight: 900;
-      letter-spacing: 0.08em;
-    }
+h1 {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: clamp(32px, 6vw, 58px);
+  font-weight: 900;
+  letter-spacing: 0.08em;
+}
 
-    .tagline {
-      margin-top: 12px;
-      font-size: 15px;
-      font-style: italic;
-    }
+.tagline {
+  margin-top: 12px;
+  font-size: 15px;
+  font-style: italic;
+}
 
-    nav {
-      margin-top: 28px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-    }
+nav {
+  margin-top: 28px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+}
 
-    nav a {
-      color: #111;
-      text-decoration: none;
-      margin: 0 12px;
-    }
+nav a {
+  color: #111;
+  text-decoration: none;
+  margin: 0 12px;
+}
 
-    nav a:hover {
-      text-decoration: underline;
-    }
+nav a:hover {
+  text-decoration: underline;
+}
 
-    .featured {
-      text-align: center;
-      margin-bottom: 78px;
-    }
+.featured {
+  text-align: center;
+  margin-bottom: 78px;
+}
 
-    .panel-image {
-      display: block;
-      width: min(100%, 720px);
-      margin: 0 auto;
-      border: 1px solid #111;
-    }
+.panel-image {
+  display: block;
+  width: min(100%, 720px);
+  margin: auto;
+}
 
-    .caption {
-      max-width: 700px;
-      margin: 22px auto 0;
-      font-size: 18px;
-      line-height: 1.5;
-    }
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  margin-top: 28px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
 
-    .panel-date {
-      margin-top: 12px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
+.controls button {
+  background: none;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  font: inherit;
+}
 
-    .controls {
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-      margin-top: 28px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
+.controls button:hover {
+  text-decoration: underline;
+}
 
-    .controls button {
-      background: none;
-      border: none;
-      padding: 5px;
-      color: #111;
-      cursor: pointer;
-      font: inherit;
-    }
+section {
+  padding: 70px 0;
+  border-top: 1px solid #ddd;
+}
 
-    .controls button:hover {
-      text-decoration: underline;
-    }
+section h2 {
+  text-align: center;
+  margin: 0 0 42px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
 
-    section {
-      padding: 70px 0;
-      border-top: 1px solid #ddd;
-    }
+.archive-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
 
-    section h2 {
-      text-align: center;
-      margin: 0 0 42px;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 18px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
+.archive-item {
+  cursor: pointer;
+}
 
-    .archive-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
+.archive-item img {
+  width: 100%;
+  display: block;
+}
 
-    .archive-item {
-      cursor: pointer;
-    }
+.about,
+.subscribe {
+  max-width: 620px;
+  margin: auto;
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.65;
+}
 
-    .archive-item img {
-      width: 100%;
-      display: block;
-      border: 1px solid #111;
-    }
+footer {
+  padding: 50px 0 70px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
 
-    .archive-item p {
-      margin: 10px 0 0;
-      font-size: 13px;
-      line-height: 1.35;
-    }
+.empty {
+  padding: 100px 0;
+  font-style: italic;
+}
 
-    .about,
-    .subscribe {
-      max-width: 620px;
-      margin: 0 auto;
-      text-align: center;
-      font-size: 17px;
-      line-height: 1.65;
-    }
+@media (max-width: 700px) {
+  header {
+    padding-top: 42px;
+  }
 
-    .subscribe a {
-      color: #111;
-      font-weight: bold;
-    }
+  .archive-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
 
-    footer {
-      padding: 50px 0 70px;
-      text-align: center;
-      font-family: Arial, Helvetica, sans-serif;
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    .empty {
-      text-align: center;
-      padding: 100px 0;
-      font-style: italic;
-    }
-
-    @media (max-width: 700px) {
-      header {
-        padding-top: 42px;
-      }
-
-      .archive-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 14px;
-      }
-
-      .controls {
-        gap: 14px;
-      }
-    }
-  </style>
+  .controls {
+    gap: 14px;
+  }
+}
+</style>
 </head>
 
 <body>
 
-  <div class="site">
+<div class="site">
 
-    <header>
-      <h1>PRIVATE ORBITS</h1>
+<header>
 
-      <div class="tagline">
-        Single-panel observations from somewhere slightly wrong.
-      </div>
+<h1>PRIVATE ORBITS</h1>
 
-      <nav>
-        <a href="#archive">Archive</a>
-        <a href="#about">About</a>
-        <a href="#subscribe">Subscribe</a>
-      </nav>
-    </header>
+<div class="tagline">
+Single-panel observations from somewhere slightly wrong.
+</div>
 
+<nav>
+<a href="#archive">Archive</a>
+<a href="#about">About</a>
+<a href="#subscribe">Subscribe</a>
+</nav>
 
-    <main>
+</header>
 
-      <div id="featured" class="featured"></div>
+<main>
 
+<div id="featured" class="featured"></div>
 
-      <section id="archive">
-        <h2>Archive</h2>
-        <div id="archiveGrid" class="archive-grid"></div>
-      </section>
+<section id="archive">
 
+<h2>Archive</h2>
 
-      <section id="about">
-        <h2>About</h2>
+<div id="archiveGrid" class="archive-grid"></div>
 
-        <div class="about">
-          <p>
-            <em>Private Orbits</em> is a series of single-panel drawings
-            concerning people, creatures and situations that have drifted
-            very slightly away from normal.
-          </p>
-        </div>
-      </section>
+</section>
 
+<section id="about">
 
-      <section id="subscribe">
-        <h2>Subscribe</h2>
+<h2>About</h2>
 
-        <div class="subscribe">
-          <p>
-            New Orbits occasionally escape into the world.
-          </p>
+<div class="about">
 
-          <p>
-            Mailing list coming soon.
-          </p>
-        </div>
-      </section>
+<p>
+<em>Private Orbits</em> is a series of single-panel drawings concerning people, creatures and situations that have drifted very slightly away from normal.
+</p>
 
-    </main>
+</div>
 
+</section>
 
-    <footer>
-      © Private Orbits
-    </footer>
+<section id="subscribe">
 
-  </div>
+<h2>Subscribe</h2>
 
+<div class="subscribe">
+
+<p>
+New Orbits occasionally escape into the world.
+</p>
+
+<p>
+Mailing list coming soon.
+</p>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>
+© Private Orbits
+</footer>
+
+</div>
 
 <script>
 
-/*
-=========================================================
-PRIVATE ORBITS — PANEL LIST
-
-Each time we publish a new panel, add ONE new entry here.
-
-Newest panel goes FIRST.
-
-Example:
-
-{
-  image: "panels/viking-queue.jpg",
-  caption: "There was a brief moment of tension...",
-  date: "3 October 2026"
-},
-
-=========================================================
-*/
-
 const panels = [
-
-  /*
-  Add first published panel here.
-  */
 
 ];
 
@@ -309,36 +261,26 @@ function showPanel(index) {
 
   currentPanel = index;
 
-  const panel = panels[currentPanel];
-
   document.getElementById("featured").innerHTML = `
 
     <img
       class="panel-image"
-      src="${panel.image}"
+      src="${panels[currentPanel]}"
       alt="Private Orbits comic panel"
     >
-
-    <div class="caption">
-      ${panel.caption}
-    </div>
-
-    <div class="panel-date">
-      ${panel.date}
-    </div>
 
     <div class="controls">
 
       <button onclick="previousPanel()">
-        ← Previous
+      ← Previous
       </button>
 
       <button onclick="randomPanel()">
-        Random
+      Random
       </button>
 
       <button onclick="nextPanel()">
-        Next →
+      Next →
       </button>
 
     </div>
@@ -386,9 +328,10 @@ function randomPanel() {
   let random;
 
   do {
+
     random = Math.floor(Math.random() * panels.length);
-  }
-  while (random === currentPanel);
+
+  } while (random === currentPanel);
 
   showPanel(random);
 }
@@ -417,15 +360,15 @@ function buildArchive() {
     item.innerHTML = `
 
       <img
-        src="${panel.image}"
+        src="${panel}"
         alt="Private Orbits comic panel"
       >
-
-      <p>${panel.caption}</p>
     `;
 
     item.onclick = function() {
+
       showPanel(index);
+
     };
 
     archive.appendChild(item);
@@ -436,6 +379,7 @@ function buildArchive() {
 
 
 buildArchive();
+
 showPanel(0);
 
 </script>
